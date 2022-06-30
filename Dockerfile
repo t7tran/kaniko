@@ -12,6 +12,13 @@ RUN curl -fsSLo /build/jq https://github.com/stedolan/jq/releases/download/jq-$J
 RUN curl -fsSLo /build/yq https://github.com/mikefarah/yq/releases/download/v$YQ_VERSION/yq_linux_amd64
 RUN chmod +x /build/*
 
+
+
 FROM gcr.io/kaniko-project/executor:v1.8.1-debug
 
+ENV PATH /usr/bin:$PATH
+
 COPY --from=build /build/* /usr/local/bin/
+
+RUN mkdir -p /usr/bin && \
+    for e in `ls -1 /busybox`; do ln -s /busybox/$e /usr/bin/$e; done
