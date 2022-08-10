@@ -4,7 +4,7 @@ ENV \
     # https://github.com/mikefarah/yq/releases
     JQ_VERSION=1.6 \
     # https://github.com/mikefarah/yq/releases
-    YQ_VERSION=4.25.3
+    YQ_VERSION=4.27.2
 
 RUN apk add curl
 RUN mkdir /build
