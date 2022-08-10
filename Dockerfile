@@ -14,7 +14,7 @@ RUN chmod +x /build/*
 
 
 
-FROM gcr.io/kaniko-project/executor:v1.8.1-debug
+FROM gcr.io/kaniko-project/executor:v1.9.0-debug
 
 ENV PATH /usr/bin:$PATH
 
