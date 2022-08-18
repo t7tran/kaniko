@@ -6,11 +6,12 @@ ENV \
     # https://github.com/mikefarah/yq/releases
     YQ_VERSION=4.27.2
 
-RUN apk add curl
-RUN mkdir /build
-RUN curl -fsSLo /build/jq https://github.com/stedolan/jq/releases/download/jq-$JQ_VERSION/jq-linux64
-RUN curl -fsSLo /build/yq https://github.com/mikefarah/yq/releases/download/v$YQ_VERSION/yq_linux_amd64
-RUN chmod +x /build/*
+RUN apk add curl tzdata
+RUN mkdir -p /rootfs/usr/local/bin /rootfs/usr/share
+RUN curl -fsSLo /rootfs/usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-$JQ_VERSION/jq-linux64
+RUN curl -fsSLo /rootfs/usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v$YQ_VERSION/yq_linux_amd64
+RUN chmod +x /rootfs/usr/local/bin/*
+RUN cp -r /usr/share/zoneinfo /rootfs/usr/share/
 
 
 
@@ -18,7 +19,7 @@ FROM gcr.io/kaniko-project/executor:v1.9.0-debug
 
 ENV PATH /usr/bin:$PATH
 
-COPY --from=build /build/* /usr/local/bin/
+COPY --from=build /rootfs /
 
 RUN mkdir -p /usr/bin && \
     for e in `ls -1 /busybox`; do ln -s /busybox/$e /usr/bin/$e; done
