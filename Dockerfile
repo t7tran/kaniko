@@ -17,9 +17,4 @@ RUN cp -r /usr/share/zoneinfo /rootfs/usr/share/
 
 FROM gcr.io/kaniko-project/executor:v1.9.1-debug
 
-ENV PATH /usr/bin:$PATH
-
 COPY --from=build /rootfs /
-
-RUN mkdir -p /usr/bin && \
-    for e in `ls -1 /busybox`; do ln -s /busybox/$e /usr/bin/$e; done
