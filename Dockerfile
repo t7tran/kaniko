@@ -7,10 +7,10 @@ ENV \
     YQ_VERSION=4.29.2
 
 RUN apk add curl tzdata
-RUN mkdir -p /rootfs/usr/local/bin /rootfs/usr/share
-RUN curl -fsSLo /rootfs/usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-$JQ_VERSION/jq-linux64
-RUN curl -fsSLo /rootfs/usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v$YQ_VERSION/yq_linux_amd64
-RUN chmod +x /rootfs/usr/local/bin/*
+RUN mkdir -p /rootfs/busybox /rootfs/usr/share
+RUN curl -fsSLo /rootfs/busybox/jq https://github.com/stedolan/jq/releases/download/jq-$JQ_VERSION/jq-linux64
+RUN curl -fsSLo /rootfs/busybox/yq https://github.com/mikefarah/yq/releases/download/v$YQ_VERSION/yq_linux_amd64
+RUN chmod +x /rootfs/busybox/*
 RUN cp -r /usr/share/zoneinfo /rootfs/usr/share/
 
 
