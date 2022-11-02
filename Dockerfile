@@ -4,7 +4,7 @@ ENV \
     # https://github.com/mikefarah/yq/releases
     JQ_VERSION=1.6 \
     # https://github.com/mikefarah/yq/releases
-    YQ_VERSION=4.27.5
+    YQ_VERSION=4.29.2
 
 RUN apk add curl tzdata
 RUN mkdir -p /rootfs/usr/local/bin /rootfs/usr/share
