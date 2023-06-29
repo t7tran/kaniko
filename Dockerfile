@@ -1,7 +1,7 @@
 FROM alpine:3.18 as build
 
 ENV \
-    # https://github.com/mikefarah/yq/releases
+    # https://github.com/stedolan/jq/releases
     JQ_VERSION=1.6 \
     # https://github.com/mikefarah/yq/releases
     YQ_VERSION=4.34.1
@@ -15,6 +15,6 @@ RUN cp -r /usr/share/zoneinfo /rootfs/usr/share/
 
 
 
-FROM gcr.io/kaniko-project/executor:v1.10.0-debug
+FROM gcr.io/kaniko-project/executor:v1.12.0-debug
 
 COPY --from=build /rootfs /
