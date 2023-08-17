@@ -6,5 +6,5 @@ See https://github.com/GoogleContainerTools/kaniko
 The latest image can be pulled via:
 
 ```
-docker pull ghcr.io/t7tran/kaniko:1.13.0
+docker pull ghcr.io/t7tran/kaniko:1.14.0
 ```
