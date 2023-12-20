@@ -15,6 +15,6 @@ RUN cp -r /usr/share/zoneinfo /rootfs/usr/share/
 
 
 
-FROM gcr.io/kaniko-project/executor:v1.19.1-debug
+FROM gcr.io/kaniko-project/executor:v1.19.2-debug
 
 COPY --from=build /rootfs /
