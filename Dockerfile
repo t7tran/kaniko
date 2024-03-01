@@ -1,4 +1,4 @@
-FROM alpine:3.19 as build
+FROM alpine:3.19.1 as build
 
 ENV \
     # https://github.com/stedolan/jq/releases
@@ -15,6 +15,6 @@ RUN cp -r /usr/share/zoneinfo /rootfs/usr/share/
 
 
 
-FROM gcr.io/kaniko-project/executor:v1.20.0-debug
+FROM gcr.io/kaniko-project/executor:v1.21.0-debug
 
 COPY --from=build /rootfs /
