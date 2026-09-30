@@ -1,4 +1,4 @@
-FROM alpine:3.19.1 as build
+FROM alpine:3.24.2 as build
 
 ENV \
     # https://github.com/stedolan/jq/releases
@@ -15,6 +15,6 @@ RUN cp -r /usr/share/zoneinfo /rootfs/usr/share/
 
 
 
-FROM gcr.io/kaniko-project/executor:v1.24.0-debug
+FROM ghcr.io/osscontainertools/kaniko:v1.28.5-debug
 
 COPY --from=build /rootfs /
